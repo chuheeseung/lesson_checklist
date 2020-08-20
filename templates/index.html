@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Stylish&amp;display=swap" rel="stylesheet">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <!--부트스트랩 js 선언 복사-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+    <title>체크리스트</title>
+
+    <style>
+        .title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 30px;
+            width: 800px;
+            margin: 10px auto;
+        }
+
+        /*.table {*/
+        /*    width: 1000px;*/
+        /*    margin: 5px auto;*/
+        /*}*/
+
+        .table-responsive {
+            width: 1200px;
+            margin: 10px auto;
+            vertical-align: baseline;
+        }
+
+        .list {
+            width: 55px;
+        }
+
+        .study1 {
+            width: 180px;
+        }
+
+        .form-check {
+            vertical-align: -3px;
+            text-align: center;
+        }
+
+        .form-check-input {
+            align: center;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+                getCheck();
+            });
+
+        function check(category, target) {
+            console.log('clicked onchange')
+            console.log(category)
+            console.log(target)
+            //체크 돼 있으면 체크 안되게 & 체크 안돼있으면 체크 되게
+            // if ($('#present_week1').is(":checked")) {
+            //     $('#present_week1').attr("checked", false);
+            // } else {
+            //     $('#present_week1').attr("checked", true);
+            // }
+            //
+
+            let isChecked = $('#' + category + '_' + target).is(":checked")
+            console.log(isChecked)
+
+            $.ajax({
+                type: "POST",
+                url: "/check",
+                data: {
+                    category : category,
+                    target: target, //몇주차인지
+                    isChecked: isChecked //체크됐는지 boolean 값
+                },
+                success: function (response) {
+                    if(isChecked == true) {
+                    // if ($(target).is(":checked")) {
+                        alert('체크되었습니다');
+                        window.location.reload();
+                    }
+                    else {
+                        alert('서버 오류');
+                    }
+                }
+
+            })
+        }
+
+        function getCheck() {
+            $.ajax({
+                type : "GET",
+                url : "/check",
+                data : {},
+                success : function(response) {
+                    let targetData = response["result"]
+
+                    for(let i=0; i<targetData.length; i++) {
+                        let list = targetData[i];
+
+                        $('#' + 'present_' + list.target).prop('checked', list.isChecked);
+
+                        // if(list.isChecked == true) {
+                        //     //체크된 박스는 체크되게 가져오는 코드
+                        //     $('list.target').attr('checked',true)
+                        //
+                        //
+                        //
+                        // }
+                    }
+                }
+            })
+        }
+
+    </script>
+</head>
+<body>
+<div class="title">체크리스트</div>
+<div class="overflow-x:auto;">
+    <!--    Q. <div class="overflow-x:auto;">이게 과연 필요한가?-->
+    <table class=" text-center table-responsive table-bordered table-hover">
+        <!--    table-bordered : 모든 셀에 테두리선-->
+        <!--    table-hover : 각 행에 마우스를 갖다대면 회색배경색-->
+        <thead>
+        <tr class="list">
+            <th>과목</th>
+            <th>목록</th>
+            <th>1주차</th>
+            <th>2주차</th>
+            <th>3주차</th>
+            <th>4주차</th>
+            <th>5주차</th>
+            <th>6주차</th>
+            <th>7주차</th>
+            <th>8주차</th>
+            <th>9주차</th>
+            <th>10주차</th>
+            <th>11주차</th>
+            <th>12주차</th>
+            <th>13주차</th>
+            <th>14주차</th>
+            <th>15주차</th>
+            <th>16주차</th>
+        </tr>
+        </thead>
+        <tbody class="text-center">
+        <!--객체지향프로그래밍 출석 라인-->
+        <tr>
+            <td rowspan="2" class="study1" id="study1">객체지향프로그래밍</td>
+            <td>출석</td>
+            <!--1주차-->
+            <td class="text-center">
+                <div class="form-check">
+                    <input onchange="check('week1')" type="checkbox" class="form-check-input" id="present_week1">
+                    <label class="form-check-label"></label>
+                </div>
+            </td>
+            <!--2주차-->
+            <td>
+                <div class="form-check">
+                    <input onchange="check('present', 'week2')" value="" type="checkbox" class="form-check-input"
+                           id="present_week2">
+                    <label class="form-check-label"></label>
+                </div>
+            </td>
+            <!--3주차-->
+            <td>
+                <div class="form-check">
+                    <input onchange="check('week3')" type="checkbox" class="form-check-input" id="present_week3">
+                    <label class="form-check-label"></label>
+                </div>
+            </td>
+            <!--4주차-->
+            <td>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="present_week4">
+                    <label class="form-check-label"></label>
+                </div>
+            </td>
+            <!--5주차-->
+            <td>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="present_week5">
+                    <label class="form-check-label"></label>
+                </div>
+            </td>
+            <!--6주차-->
+            <td>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="present_week6">
+                    <label class="form-check-label"></label>
+                </div>
+            </td>
+            <!--7주차-->
+            <td>
+                <!-- Material unchecked -->
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="present_week7">
+                    <label class="form-check-label"></label>
+                </div>
+            </td>
+            <!--8주차-->
+            <td>
+                <!-- Material unchecked -->
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="present_week8">
+                    <label class="form-check-label"></label>
+                </div>
+            </td>
+            <!--9주차-->
+            <td>
+                <!-- Material unchecked -->
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="present_week9">
+                    <label class="form-check-label"></label>
+                </div>
+            </td>
+            <!--10주차-->
+            <td>
+                <!-- Material unchecked -->
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="present_week10">
+                    <label class="form-check-label"></label>
+                </div>
+            </td>
+            <!--11주차-->
+            <td>
+                <!-- Material unchecked -->
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="present_week11">
+                    <label class="form-check-label"></label>
+                </div>
+            </td>
+            <!--12주차-->
+            <td>
+                <!-- Material unchecked -->
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="present_week12">
+                    <label class="form-check-label"></label>
+                </div>
+            </td>
+            <!--13주차-->
+            <td>
+                <!-- Material unchecked -->
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="present_week13">
+                    <label class="form-check-label"></label>
+                </div>
+            </td>
+            <!--14주차-->
+            <td>
+                <!-- Material unchecked -->
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="present_week14">
+                    <label class="form-check-label"></label>
+                </div>
+            </td>
+            <!--15주차-->
+            <td>
+                <!-- Material unchecked -->
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="present_week15">
+                    <label class="form-check-label"></label>
+                </div>
+            </td>
+            <!--16주차-->
+            <td>
+                <!-- Material unchecked -->
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="present_week16">
+                    <label class="form-check-label"></label>
+                </div>
+            </td>
+        </tr>
+        <!--        객체지향프로그래밍 강의 수강 라인-->
+<!--        <tr>-->
+<!--            &lt;!&ndash;                    <td class="study1" id="study2">객체지향프로그래밍</td>&ndash;&gt;-->
+<!--            <td>강의수강</td>-->
+<!--            &lt;!&ndash;1주차&ndash;&gt;-->
+<!--            <td>-->
+<!--                &lt;!&ndash;             Material unchecked&ndash;&gt;-->
+<!--                <div class="form-check">-->
+<!--                    <input onClick="check(this)" type="checkbox" class="form-check-input" id="lesson_week1">-->
+<!--                    <label class="form-check-label"></label>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--            &lt;!&ndash;2주차&ndash;&gt;-->
+<!--            <td>-->
+<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
+<!--                <div class="form-check">-->
+<!--                    <input type="checkbox" class="form-check-input" id="lesson_week2">-->
+<!--                    <label class="form-check-label"></label>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--            &lt;!&ndash;3주차&ndash;&gt;-->
+<!--            <td>-->
+<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
+<!--                <div class="form-check">-->
+<!--                    <input type="checkbox" class="form-check-input" id="lesson_week3">-->
+<!--                    <label class="form-check-label"></label>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--            &lt;!&ndash;4주차&ndash;&gt;-->
+<!--            <td>-->
+<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
+<!--                <div class="form-check">-->
+<!--                    <input type="checkbox" class="form-check-input" id="lesson_week4">-->
+<!--                    <label class="form-check-label"></label>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--            &lt;!&ndash;5주차&ndash;&gt;-->
+<!--            <td>-->
+<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
+<!--                <div class="form-check">-->
+<!--                    <input type="checkbox" class="form-check-input" id="lesson_week5">-->
+<!--                    <label class="form-check-label"></label>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--            &lt;!&ndash;6주차&ndash;&gt;-->
+<!--            <td>-->
+<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
+<!--                <div class="form-check">-->
+<!--                    <input type="checkbox" class="form-check-input" id="lesson_week6">-->
+<!--                    <label class="form-check-label"></label>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--            &lt;!&ndash;7주차&ndash;&gt;-->
+<!--            <td>-->
+<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
+<!--                <div class="form-check">-->
+<!--                    <input type="checkbox" class="form-check-input" id="lesson_week7">-->
+<!--                    <label class="form-check-label"></label>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--            &lt;!&ndash;8주차&ndash;&gt;-->
+<!--            <td>-->
+<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
+<!--                <div class="form-check">-->
+<!--                    <input type="checkbox" class="form-check-input" id="lesson_week8">-->
+<!--                    <label class="form-check-label"></label>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--            &lt;!&ndash;9주차&ndash;&gt;-->
+<!--            <td>-->
+<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
+<!--                <div class="form-check">-->
+<!--                    <input type="checkbox" class="form-check-input" id="lesson_week9">-->
+<!--                    <label class="form-check-label"></label>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--            &lt;!&ndash;10주차&ndash;&gt;-->
+<!--            <td>-->
+<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
+<!--                <div class="form-check">-->
+<!--                    <input type="checkbox" class="form-check-input" id="lesson_week10">-->
+<!--                    <label class="form-check-label"></label>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--            &lt;!&ndash;11주차&ndash;&gt;-->
+<!--            <td>-->
+<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
+<!--                <div class="form-check">-->
+<!--                    <input type="checkbox" class="form-check-input" id="lesson_week11">-->
+<!--                    <label class="form-check-label"></label>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--            &lt;!&ndash;12주차&ndash;&gt;-->
+<!--            <td>-->
+<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
+<!--                <div class="form-check">-->
+<!--                    <input type="checkbox" class="form-check-input" id="lesson_week12">-->
+<!--                    <label class="form-check-label"></label>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--            &lt;!&ndash;13주차&ndash;&gt;-->
+<!--            <td>-->
+<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
+<!--                <div class="form-check">-->
+<!--                    <input type="checkbox" class="form-check-input" id="lesson_week13">-->
+<!--                    <label class="form-check-label"></label>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--            &lt;!&ndash;14주차&ndash;&gt;-->
+<!--            <td>-->
+<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
+<!--                <div class="form-check">-->
+<!--                    <input type="checkbox" class="form-check-input" id="lesson_week14">-->
+<!--                    <label class="form-check-label"></label>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--            &lt;!&ndash;15주차&ndash;&gt;-->
+<!--            <td>-->
+<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
+<!--                <div class="form-check">-->
+<!--                    <input type="checkbox" class="form-check-input" id="lesson_week15">-->
+<!--                    <label class="form-check-label"></label>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--            &lt;!&ndash;16주차&ndash;&gt;-->
+<!--            <td>-->
+<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
+<!--                <div class="form-check">-->
+<!--                    <input type="checkbox" class="form-check-input" id="lesson_week16">-->
+<!--                    <label class="form-check-label"></label>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--        </tr>-->
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

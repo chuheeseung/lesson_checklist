@@ -1,0 +1,811 @@
+<html lang="ko"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="naver-site-verification" content="24464651e5f0f1f53a47e492d171a5f30881d416">
+    <meta name="naver-site-verification" content="88eb8d3d34a4c52092ac2b582ca53efacd9c0cbe">
+
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="gzKSz5VCIj0Bhcyy4axCbYgcBYcazrvfhc3KQ3cp">
+
+    <title>수학의기술  중계점 </title>
+<link rel="icon" href="https://skillsinmath.com/favicon.ico">
+
+<meta name="title" content="수학의기술">
+<meta name="description" content="프리미엄  교육센터 수학의기술입니다.수학전문학원으로서 최고의 교육을 지향합니다.">
+<meta name="keywords" content="수학의기술,중계동수학학원,삼각산동수학학원,수학학원,중계동,삼각산동,길음동,미아동,수학전문학원">
+<meta name="robots" content="index, follow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="language" content="Korean">
+<meta name="author" content="수학의기술">
+
+<meta property="og:title" content="수학의기술">
+<meta property="og:site_name" content="수학의기술">
+<meta property="og:url" content="https://www.skillsinmath.com">
+<meta property="og:description" content="프리미엄 교육센터 수학의기술입니다.수학전문학원으로서 최고의 교육을 지향합니다.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://skillsinmath.com/images/logo2.png">
+
+<meta name="naver-site-verification" content="88eb8d3d34a4c52092ac2b582ca53efacd9c0cbe">
+
+
+<!-- Styles -->
+    <link href="https://skillsinmath.com/css/app.css" rel="stylesheet">
+    <link href="https://skillsinmath.com/css/sweetalert2-dark.min.css" rel="stylesheet">
+    <link href="https://skillsinmath.com/css/dataTables.bootstrap.min.css" rel="stylesheet">
+
+        <!-- 합쳐지고 최소화된 최신 CSS -->
+    <style>
+        .btn span.glyphicon {
+            opacity: 0;
+        }
+
+        .btn.active span.glyphicon {
+            opacity: 1;
+        }
+
+        td, th {
+            padding-top: 5px !important;
+            padding-bottom: 5px !important;
+            vertical-align: middle !important;
+        }
+    </style>
+
+    <style>
+        #app {
+            overflow: hidden;
+        }
+        li {
+            list-style: none !important;
+        }
+
+        textarea[readonly] {
+            background-color: #eeeeee !important;
+        }
+
+        textarea::placeholder {
+            color: #ccd0d2 !important;
+        }
+
+        div.panel.panel-default {
+            padding: 30px 50px;
+            -webkit-box-shadow: 7px 7px 20px 0px rgba(50, 50, 50, 0.5);
+            -moz-box-shadow: 7px 7px 20px 0px rgba(50, 50, 50, 0.5);
+            box-shadow: 7px 7px 20px 0px rgba(50, 50, 50, 0.5);
+        }
+
+        div.panel.panel-default.calendar {
+            padding: 10px;
+        }
+
+
+                                       /* Custom checkbox Hiding the checkbox, but allowing it to be focused */
+        .mon, .tue, .thu, .wed, .tue, .fri, .sat, .sun {
+            display: none;
+        }
+
+        input.day_time {
+            display: none;
+        }
+
+        label.btn-day {
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+        }
+
+        input.day_time + label.add {
+            background-color: #bf5329;
+            color: white;
+        }
+
+        .remove-student {
+            visibility: hidden;
+        }
+
+        a.remove-student {
+            color: white !important;
+        }
+
+        .class-students {
+            margin-right: 5px;
+        }
+
+        .class-students:hover > a.remove-student {
+            visibility: visible;
+        }
+
+
+
+        #flash {
+            position: fixed;
+            top: 50px;
+            width: 100%;
+            z-index: 999999;
+            text-align: center;
+            font-size: 22px;
+        }
+
+        .search-box .input-group-addon {
+            border: 1px solid #bf5329;
+        }
+
+        .mdtp__wrapper {
+            top: 10% !important;
+            bottom: auto !important;
+        }
+
+        @media (min-width: 1400px) {
+            .attendance-container {
+                width: 1400px !important;
+            }
+
+            .panel.panel-default.calendar {
+                width: 200%;
+            }
+        }
+        @media (max-width: 1399px) {
+            .attendance-container {
+                width: 100% !important;
+            }
+            div.fc-center h2 {
+                font-size: 22px !important;
+                font-weight: bold;
+            }
+            .fc-button {
+                padding: 0.4em 0.35em !important;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .navbar.navbar-default.navbar-static-top {
+                margin-bottom: 15px !important;
+            }
+
+            .container {
+                width: 100% !important;
+                padding: 0 !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #calc_text {
+                display: none;
+            }
+
+            div.panel.panel-default {
+                padding: 10px 5px;
+            }
+        }
+
+
+        .fc-time {
+            display: block;
+        }
+
+        .cursor {
+            cursor: pointer;
+        }
+
+        .watermark:before {
+            content: "";
+            background-image: url('https://skillsinmath.com/images/logo3.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+
+            position: absolute;
+            z-index: -1;
+            top: 100px;
+            left: 0;
+            right: 0;
+            opacity: .1;
+            width: 80%;
+            height: 80%;
+            margin: 0 auto;
+        }
+
+        .dropdown-menu {
+            min-width: 120px !important;
+        }
+
+        .mdtp__button.ok::after {
+            content: ' - AM/PM 꼭 확인해주세요';
+            color: black;
+            font-weight: bold;
+        }
+
+        .swal2-content pre {
+            white-space: pre-wrap;
+            text-align: left;
+        }
+
+        /* 히스토리 */
+        .history::before {
+            content: '과거 상담';
+            display: block;
+            font-size: 18px;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .history {
+            position: absolute;
+            top: 72px;
+            left: 10px;
+            z-index: 999;
+            padding: 10px !important;
+            width: 300px;
+            max-height: 1128px;
+            overflow: scroll;
+            overflow-x: hidden;
+        }
+
+        /* scroll bar style*/
+        /* width */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #bbbbbb;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #bbbbbb;
+        }
+    </style>
+                </head>
+<body>
+<div id="flash">
+            </div>
+<div id="app">
+    <nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <!-- Collapsed Hamburger -->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Branding Image -->
+            <a class="navbar-brand" href="https://skillsinmath.com">
+                <img src="https://skillsinmath.com/images/logo.png" height="30">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="app-navbar-collapse">
+            <!-- Left Side Of Navbar -->
+            <ul class="nav navbar-nav">
+                &nbsp;
+            </ul>
+
+            <!-- Right Side Of Navbar -->
+            <ul class="nav navbar-nav navbar-right">
+                <!-- Authentication Links -->
+                                                        <!--
+                            <li><a href="https://skillsinmath.com/desk">출결</a></li>
+                            -->
+                                                    <li><a href="https://skillsinmath.com/desk">출석</a></li>
+                                                <li><a href="https://skillsinmath.com/customer/create">신규상담</a></li>
+                        <li><a href="https://skillsinmath.com/dashboard">대시보드</a></li>
+                                                <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                관리 <span class="caret"></span>
+                                </a><ul class="dropdown-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+
+                                    </a><li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true"></a><a href="https://skillsinmath.com/school">학교</a></li>
+                                    <li><a href="https://skillsinmath.com/student">학생</a></li>
+                                    <li><a href="https://skillsinmath.com/class">클래스</a></li>
+                                    <li><a href="https://skillsinmath.com/sms">문자전송</a></li>
+                                    <li><a href="https://skillsinmath.com/sms/reservation">예약문자</a></li>
+                                    <li><a href="https://skillsinmath.com/phone-call/create">학부모 상담</a></li>
+                                </ul>
+
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                강의 <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                                                    <li>
+                                        <a href="https://skillsinmath.com/attendance/class/235/create">출석부(수업)</a>
+                                    </li>
+                                                                <li><a href="https://skillsinmath.com/attendance/bogang/create">출석부(보강)</a></li>
+                                <li><a href="https://skillsinmath.com/attendance/not-closing">미마감 리스트</a></li>
+                                <li><a href="https://skillsinmath.com/bogang">결석생 리스트</a></li>
+                                <li><a href="https://skillsinmath.com/lecture/two-points-new">2점 노트</a></li>
+                                    <li><a href="https://skillsinmath.com/daily-briefing">데브</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                요약 <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="https://skillsinmath.com/summary/point">무벌점</a></li>
+                            </ul>
+                        </li>
+                                        <li><a href="https://skillsinmath.com/lecture">동영상 강의</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                            수학의기술 - 중계점 <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a href="https://skillsinmath.com/mypage">마이페이지</a></li>
+                                                                <li><a href="https://skillsinmath.com/settings">알림설정</a></li>
+                                                        <li>
+                                <a href="https://skillsinmath.com/logout" onclick="event.preventDefault();
+                     document.getElementById('logout-form').submit();">
+                                    로그아웃
+                                </a>
+
+                                <form id="logout-form" action="https://skillsinmath.com/logout" method="POST" style="display: none;">
+                                    <input type="hidden" name="_token" value="gzKSz5VCIj0Bhcyy4axCbYgcBYcazrvfhc3KQ3cp">
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                            </ul>
+        </div>
+    </div>
+</nav>
+
+            <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+
+                    <div class="panel-heading" style="margin-bottom: 15px; overflow: hidden;">
+                        <div class="col-sm-7">
+                            <strong>2점 노트</strong>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-info">
+                                    <input type="checkbox" name="" id="is_display_finish" value="1" autocomplete="off">
+                                    <span class="glyphicon glyphicon-ok"></span> 완료 숨기기
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                    <span class="input-group-addon" style="border-left: 1px solid #9a9a9a;">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                <input type="text" id="date" class="form-control date" style="cursor: pointer;" data-date-language="ko" data-date-autoclose="true" name="date" value="2020-08-19" autocomplete="off" readonly="readonly">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive" id="">
+                            <div id="two_points_table_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="two_points_table_length"><label><select name="two_points_table_length" aria-controls="two_points_table" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></label></div></div><div class="col-sm-6"><div id="two_points_table_filter" class="dataTables_filter"><label>검색어<input type="search" class="form-control input-sm" placeholder="학생 이름을 입력해주세요" aria-controls="two_points_table"></label></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-bordered table-striped text-center stripe dataTable no-footer" id="two_points_table" role="grid" aria-describedby="two_points_table_info">
+                                <thead>
+                                <tr role="row"><th class="text-center sorting" tabindex="0" aria-controls="two_points_table" rowspan="1" colspan="1" aria-label="클래스(담당): activate to sort column ascending" style="width: 158px;">클래스(담당)</th><th class="text-center sorting_asc" tabindex="0" aria-controls="two_points_table" rowspan="1" colspan="1" aria-sort="ascending" aria-label="시간: activate to sort column descending" style="width: 88px;">시간</th><th style="text-align: center; width: 58px;" class="sorting" tabindex="0" aria-controls="two_points_table" rowspan="1" colspan="1" aria-label="이름: activate to sort column ascending">이름</th><th style="text-align: center; width: 142px;" class="sorting" tabindex="0" aria-controls="two_points_table" rowspan="1" colspan="1" aria-label="교재페이지 / 문번: activate to sort column ascending">교재<br>페이지 / 문번</th><th style="text-align: center; width: 228px;" class="sorting" tabindex="0" aria-controls="two_points_table" rowspan="1" colspan="1" aria-label="내용: activate to sort column ascending">내용</th><th style="text-align: center; width: 99px;" class="sorting" tabindex="0" aria-controls="two_points_table" rowspan="1" colspan="1" aria-label="완료여부: activate to sort column ascending">완료여부</th></tr>
+                                </thead>
+                                <tbody>
+
+
+
+
+
+
+
+
+                                                                <tr role="row" class="odd">
+                                        <td class="text-center">
+                                            <a href="https://skillsinmath.com/attendance/class/264/create?date=2020-08-19">
+                                                [월수금] 강T_초등1
+                                                <br>
+                                                <small>(강지운 선생님)</small>
+                                            </a>
+                                        </td>
+                                        <td class="text-center sorting_1">03:30 PM<br> - 04:00 PM</td>
+                                        <td class="text-center" style="padding: 0;">최현호</td>
+                                        <td class="text-center">4-2 쎈<br> p99 #13</td>
+                                        <td class="text-center" style="width: 250px; white-space: pre-line; text-align: left;"></td>
+                                        <td class="text-center">
+                                            <div class="btn-group" data-toggle="buttons">
+                                                <label class="btn btn-info active">
+                                                    <input type="checkbox" name="is_finish" id="is_finish_6609" value="1" autocomplete="off" data-id="8600" data-order="0" checked="">
+                                                    <span class="glyphicon glyphicon-ok"></span> 완료
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr><tr role="row" class="even">
+                                        <td class="text-center">
+                                            <a href="https://skillsinmath.com/attendance/class/264/create?date=2020-08-19">
+                                                [월수금] 강T_초등1
+                                                <br>
+                                                <small>(강지운 선생님)</small>
+                                            </a>
+                                        </td>
+                                        <td class="text-center sorting_1">03:30 PM<br> - 04:00 PM</td>
+                                        <td class="text-center" style="padding: 0;">최현호</td>
+                                        <td class="text-center">4-2 쎈<br> p99 #15</td>
+                                        <td class="text-center" style="width: 250px; white-space: pre-line; text-align: left;"></td>
+                                        <td class="text-center">
+                                            <div class="btn-group" data-toggle="buttons">
+                                                <label class="btn btn-info active">
+                                                    <input type="checkbox" name="is_finish" id="is_finish_6610" value="1" autocomplete="off" data-id="8600" data-order="1" checked="">
+                                                    <span class="glyphicon glyphicon-ok"></span> 완료
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr><tr role="row" class="odd">
+                                        <td class="text-center">
+                                            <a href="https://skillsinmath.com/attendance/class/264/create?date=2020-08-19">
+                                                [월수금] 강T_초등1
+                                                <br>
+                                                <small>(강지운 선생님)</small>
+                                            </a>
+                                        </td>
+                                        <td class="text-center sorting_1">03:30 PM<br> - 04:00 PM</td>
+                                        <td class="text-center" style="padding: 0;">윤지환</td>
+                                        <td class="text-center">2-2 최상위s<br> p75 #4-3</td>
+                                        <td class="text-center" style="width: 250px; white-space: pre-line; text-align: left;"></td>
+                                        <td class="text-center">
+                                            <div class="btn-group" data-toggle="buttons">
+                                                <label class="btn btn-info active">
+                                                    <input type="checkbox" name="is_finish" id="is_finish_6611" value="1" autocomplete="off" data-id="8601" data-order="0" checked="">
+                                                    <span class="glyphicon glyphicon-ok"></span> 완료
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr><tr role="row" class="even">
+                                        <td class="text-center">
+                                            <a href="https://skillsinmath.com/attendance/class/264/create?date=2020-08-19">
+                                                [월수금] 강T_초등1
+                                                <br>
+                                                <small>(강지운 선생님)</small>
+                                            </a>
+                                        </td>
+                                        <td class="text-center sorting_1">03:30 PM<br> - 04:00 PM</td>
+                                        <td class="text-center" style="padding: 0;">윤지환</td>
+                                        <td class="text-center">2-2 최상위s<br> p77 #5-3</td>
+                                        <td class="text-center" style="width: 250px; white-space: pre-line; text-align: left;"></td>
+                                        <td class="text-center">
+                                            <div class="btn-group" data-toggle="buttons">
+                                                <label class="btn btn-info active">
+                                                    <input type="checkbox" name="is_finish" id="is_finish_6612" value="1" autocomplete="off" data-id="8601" data-order="1" checked="">
+                                                    <span class="glyphicon glyphicon-ok"></span> 완료
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr><tr role="row" class="odd">
+                                        <td class="text-center">
+                                            <a href="https://skillsinmath.com/attendance/class/264/create?date=2020-08-19">
+                                                [월수금] 강T_초등1
+                                                <br>
+                                                <small>(강지운 선생님)</small>
+                                            </a>
+                                        </td>
+                                        <td class="text-center sorting_1">03:30 PM<br> - 04:00 PM</td>
+                                        <td class="text-center" style="padding: 0;">박지효</td>
+                                        <td class="text-center">3-2 최상위s<br> p127 #7-3</td>
+                                        <td class="text-center" style="width: 250px; white-space: pre-line; text-align: left;"></td>
+                                        <td class="text-center">
+                                            <div class="btn-group" data-toggle="buttons">
+                                                <label class="btn btn-info active">
+                                                    <input type="checkbox" name="is_finish" id="is_finish_6613" value="1" autocomplete="off" data-id="8602" data-order="0" checked="">
+                                                    <span class="glyphicon glyphicon-ok"></span> 완료
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr><tr role="row" class="even">
+                                        <td class="text-center">
+                                            <a href="https://skillsinmath.com/attendance/class/264/create?date=2020-08-19">
+                                                [월수금] 강T_초등1
+                                                <br>
+                                                <small>(강지운 선생님)</small>
+                                            </a>
+                                        </td>
+                                        <td class="text-center sorting_1">03:30 PM<br> - 04:00 PM</td>
+                                        <td class="text-center" style="padding: 0;">박지효</td>
+                                        <td class="text-center">3-2 최상위s<br> p127 #7-4</td>
+                                        <td class="text-center" style="width: 250px; white-space: pre-line; text-align: left;"></td>
+                                        <td class="text-center">
+                                            <div class="btn-group" data-toggle="buttons">
+                                                <label class="btn btn-info active">
+                                                    <input type="checkbox" name="is_finish" id="is_finish_6614" value="1" autocomplete="off" data-id="8602" data-order="1" checked="">
+                                                    <span class="glyphicon glyphicon-ok"></span> 완료
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr><tr role="row" class="odd">
+                                        <td class="text-center">
+                                            <a href="https://skillsinmath.com/attendance/class/267/create?date=2020-08-19">
+                                                [월수금] 강T_초등2
+                                                <br>
+                                                <small>(강지운 선생님)</small>
+                                            </a>
+                                        </td>
+                                        <td class="text-center sorting_1">05:00 PM<br> - 05:30 PM</td>
+                                        <td class="text-center" style="padding: 0;">박상현</td>
+                                        <td class="text-center">유형편<br> p #55</td>
+                                        <td class="text-center" style="width: 250px; white-space: pre-line; text-align: left;"></td>
+                                        <td class="text-center">
+                                            <div class="btn-group" data-toggle="buttons">
+                                                <label class="btn btn-info active">
+                                                    <input type="checkbox" name="is_finish" id="is_finish_6615" value="1" autocomplete="off" data-id="8621" data-order="0" checked="">
+                                                    <span class="glyphicon glyphicon-ok"></span> 완료
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr><tr role="row" class="even">
+                                        <td class="text-center">
+                                            <a href="https://skillsinmath.com/attendance/class/267/create?date=2020-08-19">
+                                                [월수금] 강T_초등2
+                                                <br>
+                                                <small>(강지운 선생님)</small>
+                                            </a>
+                                        </td>
+                                        <td class="text-center sorting_1">05:00 PM<br> - 05:30 PM</td>
+                                        <td class="text-center" style="padding: 0;">박상현</td>
+                                        <td class="text-center">유형편<br> p #58</td>
+                                        <td class="text-center" style="width: 250px; white-space: pre-line; text-align: left;"></td>
+                                        <td class="text-center">
+                                            <div class="btn-group" data-toggle="buttons">
+                                                <label class="btn btn-info active">
+                                                    <input type="checkbox" name="is_finish" id="is_finish_6616" value="1" autocomplete="off" data-id="8621" data-order="1" checked="">
+                                                    <span class="glyphicon glyphicon-ok"></span> 완료
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr></tbody>
+                            </table></div></div><div class="row"><div class="col-sm-5"><div class="dataTables_info" id="two_points_table_info" role="status" aria-live="polite">1 / 1</div></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="two_points_table_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="two_points_table_previous"><a href="#" aria-controls="two_points_table" data-dt-idx="0" tabindex="0">‹</a></li><li class="paginate_button active"><a href="#" aria-controls="two_points_table" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button next disabled" id="two_points_table_next"><a href="#" aria-controls="two_points_table" data-dt-idx="2" tabindex="0">›</a></li></ul></div></div></div></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <p class="text-center" style="color: black !important; margin-top: 10px;">COPYRIGHT (c)
+        <strong>www.skillsinmath.com</strong> ALL
+        RIGHTS RESERVED. POWERED BY <a href="https://www.skillsinmath.com">SKILLS IN MATH</a>.</p>
+
+
+</div>
+
+<!-- Scripts -->
+<script src="https://skillsinmath.com/js/app.js"></script>
+<script type="text/javascript">
+    $.fn.datepicker.dates['ko'] = {
+        days: ["일", "월", "화", "수", "목", "금", "토"],
+        daysShort: ["일", "월", "화", "수", "목", "금", "토"],
+        daysMin: ["일", "월", "화", "수", "목", "금", "토"],
+        months: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+        monthsShort: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+        today: "Today",
+        clear: "Clear",
+        format: "yyyy-mm-dd",
+        titleFormat: "yyyy-mm-dd", /* Leverages same syntax as 'format' */
+        weekStart: 0
+    };
+</script>
+<script src="https://skillsinmath.com/js/jquery.dataTables.js"></script>
+<script src="https://skillsinmath.com/js/dataTables.bootstrap.min.js"></script>
+<script src="https://skillsinmath.com/js/sweetalert2.min.js"></script>
+
+
+<!-- fullcalendar -->
+<script src="https://skillsinmath.com/js/fullcalendar/main.min.js"></script>
+<script src="https://skillsinmath.com/js/fullcalendar/locales-all.min.js"></script>
+<script src="https://skillsinmath.com/js/fullcalendar/daygrid/main.min.js"></script>
+<script src="https://skillsinmath.com/js/fullcalendar/timegrid/main.min.js"></script>
+<script src="https://skillsinmath.com/js/fullcalendar/interaction/main.min.js"></script>
+<script src="https://skillsinmath.com/js/fullcalendar/google-calendar/main.min.js"></script>
+
+<!-- moment -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/locale/ko.js" integrity="sha256-8V9ZK119W7vQYcWtMdTEX0Yq1DrK10gIxqcQWxCOwOs=" crossorigin="anonymous"></script>
+
+
+<script>
+    function addComma(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function uncomma(str) {
+        str = String(str);
+        return str.replace(/[^\d]+/g, '');
+    }
+
+    $(function () {
+        log = console.log.bind(console);
+
+        $('.date').datepicker({
+            orientation: "bottom auto",
+            autoclose: true,
+            todayHighlight: true,
+            language: "ko"
+        });
+
+        $('body').on('keyup', function (e) {
+            if (e.keyCode == 32) {
+                $('select').selectpicker('show');
+            }
+        });
+
+// 숫자만 입력
+        $('.numbers_only').keyup(function () {
+            this.value = this.value.replace(/[^0-9\.]/g, '');
+        });
+
+// date input autocomplete off
+        $('.date').attr('autocomplete', 'off').attr('readonly', 'true');
+        $('.date input, #start_date').attr('autocomplete', 'off').attr('readonly', 'true');
+
+// 검색바에서는 엔터누르면 검색
+        $('input[name=keyword]').on('keydown', function (key) {
+            if (key.keyCode == 13) {
+                $('.search-box button').trigger('click');
+            }
+        });
+
+                // fullcalendar
+        let calendarEl = document.getElementById('calendar');
+
+        if (calendarEl != null) {
+// google calendar
+            let calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: ['interaction', 'googleCalendar', 'dayGrid', 'timeGrid'],
+                locale: 'ko',
+                timeZone: 'Asia/Seoul',
+                header: {
+                    left: 'prev,next,today,week',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay',
+                },
+// buttonText: {
+//     today:    '오늘',
+//     month:    '월',
+//     week:     '주',
+//     day:      '일',
+//     list:     'list'
+// },
+                editable: true,
+                minTime: "10:00:00",
+                googleCalendarApiKey: 'AIzaSyDHtrTNXNBWrxC5-9MRpLU0aQsyfC4femM',
+                height: "auto",
+                events: {
+                    googleCalendarId: 'skillsinmath@gmail.com',
+                },
+                eventTimeFormat: {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: true
+                }
+
+            });
+
+            calendar.render();
+        }
+                $('#flash_close').on('click', function () {
+            $('#flash').hide();
+        })
+
+        $('#수강료, #수강료_금액').on('keyup', function () {
+// 콤마 찍기
+            this.value = addComma(this.value.replace(/,/gi, ''));
+        });
+        $('a').on('click', function (e) {
+            if ($(this).attr('href') == '#') {
+                e.preventDefault();
+            }
+        });
+        $('#back').on('click', function () {
+            history.back();
+        });
+
+        console.log(`Designed by\n
+_____ __   _ ____   ____         __  ___      __  __
+/ ___// /__(_) / /  /  _/___     /  |/  /___ _/ /_/ /_
+\\__ \\/ //_/ / / /   / // __ \\   / /|_/ / __ \`/ __/ __ \\
+___/ / ,< / / / /  _/ // / / /  / /  / / /_/ / /_/ / / /
+/____/_/|_/_/_/_/  /___/_/ /_/  /_/  /_/\\__,_/\\__/_/ /_/`);
+    });
+</script>
+    <script>
+        $(function () {
+            $('#is_display_finish').on('change', function () {
+                $('input[id^=is_finish_]').each(function () {
+                    if ($(this).is(':checked')) {
+                        $(this).parent().parent().parent().parent().toggle();
+                    } else {
+                        $(this).parent().parent().parent().parent().show();
+                    }
+                });
+            });
+
+            $('input[id^=is_finish_]').each(function (index, item) {
+                if ($(this).is(':checked')) {
+                    $(this).parent().trigger('click');
+                }
+            });
+            $(".btn-pref .btn").click(function () {
+                $(this).parent().parent('.btn-pref').find(' button').removeClass("btn-default").addClass("btn-default");
+                // $(".tab").addClass("active"); // instead of this do the below
+                $(this).removeClass("btn-default").addClass("btn-info");
+            });
+            $('input[id^=is_finish_]').on('change', function () {
+                let dailyLectureId = $(this).data('id');
+                let order = $(this).data('order');
+                let date = '2020-08-19';
+                let checked = $(this).is(':checked') ? 1 : 0;
+                $.ajax({
+                    type: 'POST',
+                    url: 'https://skillsinmath.com/api/attendance/two-points-finish',
+                    data: {
+                        api_token: 'i64NGEYIyH7vaGaSBmf6eER6RnwAFm7tXtojpWKwRJCRE30HvXLnXi7FRWtS',
+                        required_date: date,
+                        order: order,
+                        daily_lecture_id: dailyLectureId,
+                        checked: checked,
+                    },
+                    cache: false,
+                    success: function (response) {
+                        data = JSON.parse(response);
+                        if (data.result !== "ok") {
+                            Swal.fire('실패!', data.message, 'error');
+                        }
+                    }, failure: function (response) {
+                        Swal.fire('실패!', '서버에 오류가 발생.', 'error');
+                    }
+                });
+            });
+
+            $('#two_points_table').DataTable({
+                search: {},
+                // renderer: {
+                //     "header": "jqueryui",
+                //     "pageButton": "bootstrap"
+                // },
+                responsive: true,
+                rowReorder: true,
+                language: {
+                    info: "_PAGE_ / _PAGES_",
+                    paginate: {
+                        previous: '‹',
+                        next: '›'
+                    },
+                    search: "검색어",
+                    searchPlaceholder: "학생 이름을 입력해주세요",
+                    lengthMenu: "_MENU_"
+                },
+                order: [[1, 'asc']],
+                pageLength: 100
+            });
+        });
+
+        $('#date').on('change', function (e) {
+            window.location = 'https://skillsinmath.com/lecture/two-points-new?date=' + $(this).val();
+        });
+
+    </script>
+
+
+
+</body></html>
