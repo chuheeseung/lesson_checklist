@@ -11,42 +11,26 @@
     <link href="https://fonts.googleapis.com/css?family=Stylish&amp;display=swap" rel="stylesheet">
 
     <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-    <!--부트스트랩 js 선언 복사-->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
             integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
-    <title>체크리스트</title>
+    <title>프로젝트</title>
 
     <style>
         .title {
             text-align: center;
             font-weight: bold;
             font-size: 30px;
-            width: 800px;
+            width: 400px;
             margin: 10px auto;
         }
 
-        /*.table {*/
-        /*    width: 1000px;*/
-        /*    margin: 5px auto;*/
-        /*}*/
+        .form-post {
+            width: 800px;
+            margin: auto;
+            padding: 10px 10px 10px 10px;
+            border: 1px solid #3B666B;
+        }
 
         .table-responsive {
             width: 1200px;
@@ -58,8 +42,12 @@
             width: 55px;
         }
 
-        .study1 {
+        .subjectName {
             width: 180px;
+        }
+
+        .category {
+            width: 100px;
         }
 
         .form-check {
@@ -70,44 +58,187 @@
         .form-check-input {
             align: center;
         }
+
+        .sameWidth {
+            width: 57px;
+        }
+
+        .lead {
+            width: 100px;
+            margin: 10px auto;
+        }
+
+        /*todolist style*/
+
+        /* Include the padding and border in an element's total width and height */
+        .tdl_all {
+            width: 300px;
+            margin: 10px 10px;
+            float: left;
+            box-sizing: border-box;
+        }
+
+        /* Remove margins and padding from the list */
+        .ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Style the list items */
+        .ul li {
+            cursor: pointer;
+            position: relative;
+            padding: 12px 8px 12px 40px;
+            background: #eee;
+            font-size: 18px;
+            transition: 0.2s;
+
+            /*make the list items unselectable*/
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Set all odd list items to a different color (zebra-stripes) */
+        .ul li:nth-child(odd) {
+            background: #f9f9f9;
+        }
+
+        /* Darker background-color on hover */
+        .ul li:hover {
+            background: #ddd;
+        }
+
+        /* When clicked on, add a background color and strike out text */
+        .ul li.checked {
+            background: #888;
+            color: #fff;
+            text-decoration: line-through;
+        }
+
+        /* Add a "checked" mark when clicked on */
+        .ul li.checked::before {
+            content: '';
+            position: absolute;
+            border-color: #fff;
+            border-style: solid;
+            border-width: 0 2px 2px 0;
+            top: 10px;
+            left: 16px;
+            transform: rotate(45deg);
+            height: 15px;
+            width: 7px;
+        }
+
+        /* Style the close button */
+        .close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 12px 16px 12px 16px;
+        }
+
+        .close:hover {
+            background-color: #c0d8f6;
+            color: white;
+        }
+
+        /* Style the header */
+        .header {
+            background-color: #c0d8f6;
+            padding: 30px 40px;
+            color: white;
+            text-align: center;
+        }
+
+        /* Clear floats after the header */
+        .header:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Style the input */
+        .todolistInput {
+            margin: 0;
+            border: none;
+            border-radius: 0;
+            width: 75%;
+            padding: 10px;
+            float: left;
+            font-size: 16px;
+        }
+
+        /* Style the "Add" button */
+        .addBtn {
+            padding: 10px;
+            width: 25%;
+            background: #d9d9d9;
+            color: #555;
+            float: left;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 0;
+        }
+
+        .addBtn:hover {
+            background-color: #bbb;
+        }
+
+
     </style>
 
     <script>
         $(document).ready(function () {
-                getCheck();
-            });
+            // getCheck();
+            showNewTable();
+        });
 
-        function check(category, target) {
+        function openClose() {
+            // id 값 post-box의 display 값이 block 이면(= 눈에 보이면)
+            if ($("#addTable").css("display") == "block") {
+                // post-box를 가리고
+                $("#addTable").hide();
+                // 다시 버튼을 클릭하면, 박스 열기를 할 수 있게 텍스트 바꿔두기
+                $("#btn_addTable").text("추가박스 열기");
+            } else {
+                // 아니면(눈에 보이지 않으면) post-box를 펴라
+                $("#addTable").show();
+                // 다시 버튼을 클릭하면, 박스 닫기를 할 수 있게 텍스트 바꿔두기
+                $("#btn_addTable").text("추가박스 닫기");
+            }
+        }
+
+        // 체크리스트 체크
+        function check(_id, weekNum) {
             console.log('clicked onchange')
-            console.log(category)
-            console.log(target)
-            //체크 돼 있으면 체크 안되게 & 체크 안돼있으면 체크 되게
-            // if ($('#present_week1').is(":checked")) {
-            //     $('#present_week1').attr("checked", false);
-            // } else {
-            //     $('#present_week1').attr("checked", true);
-            // }
-            //
 
-            let isChecked = $('#' + category + '_' + target).is(":checked")
+            console.log(_id)
+            console.log(weekNum)
+
+            let isChecked = $('#' + _id + '_' + weekNum).is(":checked")
             console.log(isChecked)
 
             $.ajax({
                 type: "POST",
                 url: "/check",
                 data: {
-                    category : category,
-                    target: target, //몇주차인지
+                    _id: _id,
+                    weekNum: weekNum,
                     isChecked: isChecked //체크됐는지 boolean 값
                 },
                 success: function (response) {
-                    if(isChecked == true) {
-                    // if ($(target).is(":checked")) {
+                    if (isChecked == true) {
                         alert('체크되었습니다');
                         window.location.reload();
-                    }
-                    else {
-                        alert('서버 오류');
+                    } else if (isChecked == false) {
+                        alert('체크가 해제되었습니다');
+                        window.location.reload();
+                    } else {
+                        alert('서버 오류!');
                     }
                 }
 
@@ -116,33 +247,124 @@
 
         function getCheck() {
             $.ajax({
-                type : "GET",
-                url : "/check",
-                data : {},
-                success : function(response) {
-                    let targetData = response["result"]
+                type: "GET",
+                url: "/check",
+                data: {},
+                success: function (response) {
+                    let lists = response['lists']
 
-                    for(let i=0; i<targetData.length; i++) {
-                        let list = targetData[i];
+                    for (let i = 0; i < lists.length; i++) {
+                        let list = lists[i];
 
-                        $('#' + 'present_' + list.target).prop('checked', list.isChecked);
-
-                        // if(list.isChecked == true) {
-                        //     //체크된 박스는 체크되게 가져오는 코드
-                        //     $('list.target').attr('checked',true)
-                        //
-                        //
-                        //
-                        // }
+                        $('#' + list.inputSubject + "_" + list.categoryList + "_" + list.weekNum).prop('checked', list.isChecked);
                     }
                 }
             })
         }
 
+        // input에 받은거 추가
+        function addListOnTable() {
+            let inputSubject = $('#inputSubject').val();
+            let categoryList = $('#categoryList').val();
+
+            $.ajax({
+                type: "POST",
+                url: "/input",
+                data: {inputSubject: inputSubject, categoryList: categoryList},
+                success: function (response) {
+                    if (response["result"] == "success") {
+                        alert('추가 성공!');
+                        window.location.reload();
+                    } else {
+                        alert('서버 오류!');
+                    }
+                }
+            })
+        }
+
+        function showNewTable() {
+            $.ajax({
+                type: "GET",
+                url: "/input",
+                data: {},
+                success: function (response) {
+                    response = JSON.parse(response)
+                    let lists = response['lists']
+                    console.log(lists)
+
+
+                    lists = lists.sort(function (a, b) {
+                        if (a.inputSubject < b.inputSubject) {
+                            return -1;
+                        }
+                        if (a.inputSubject > b.inputSubject) {
+                            return 1;
+                        }
+                        return 0;
+                    })
+
+                    for (let i = 0; i < lists.length; i++) {
+                        let list = lists[i];
+                        makeTable(list._id['$oid'], list.inputSubject, list.categoryList, list);
+                    }
+                }
+            })
+        }
+
+        function makeTable(_id, inputSubject, categoryList, list) {
+            let tempHtml = `<tr>
+            <td class="subjectName">${inputSubject}</td>
+            <td class="category">${categoryList}</td>`
+
+            for (let i = 0; i < 16; i++) {
+                let currentWeek = `week${i + 1}`
+                let isChecked = list[currentWeek] === true ? true : '';
+
+                tempHtml = tempHtml + `<td class="text-center">
+                <div class="form-check">
+                    <input ${isChecked ? 'checked' : ''} onchange="check('${_id}', 'week${i + 1}')" id="${_id}_week${i + 1}" type="checkbox" class="form-check-input">
+                    <label class="form-check-label"></label>
+                </div>
+            </td>`
+            }
+
+            tempHtml = tempHtml + `</tr>`
+
+            $('#tablebody').append(tempHtml);
+        }
+
+
+
+
+        function newToDoList() {
+
+        }
+
+
     </script>
 </head>
 <body>
-<div class="title">체크리스트</div>
+<div class="title">강의 수강현황 한눈에 보기!</div>
+<p class="lead">
+    <button onclick="openClose()" id="btn_addTable" type="button" class="btn btn-light"> 추가박스 열기</button>
+</p>
+
+<div class="form-post" id="addTable" style="display: none">
+    <div>
+        <div>
+            <label for="inputSubject">강의명</label>
+            <input id="inputSubject" class="form-control" placeholder="">
+        </div>
+        <div>
+            <label for="categoryList">목록</label>
+            <input id="categoryList" class="form-control" placeholder="">
+        </div>
+        <div class="text-center">
+            <button type="button" class="btn btn-primary text-center" onclick="addListOnTable()">추가하기</button>
+        </div>
+    </div>
+</div>
+
 <div class="overflow-x:auto;">
     <!--    Q. <div class="overflow-x:auto;">이게 과연 필요한가?-->
     <table class=" text-center table-responsive table-bordered table-hover">
@@ -152,288 +374,42 @@
         <tr class="list">
             <th>과목</th>
             <th>목록</th>
-            <th>1주차</th>
-            <th>2주차</th>
-            <th>3주차</th>
-            <th>4주차</th>
-            <th>5주차</th>
-            <th>6주차</th>
-            <th>7주차</th>
-            <th>8주차</th>
-            <th>9주차</th>
-            <th>10주차</th>
-            <th>11주차</th>
-            <th>12주차</th>
-            <th>13주차</th>
-            <th>14주차</th>
-            <th>15주차</th>
-            <th>16주차</th>
+            <th class="sameWidth">01주차</th>
+            <th class="sameWidth">02주차</th>
+            <th class="sameWidth">03주차</th>
+            <th class="sameWidth">04주차</th>
+            <th class="sameWidth">05주차</th>
+            <th class="sameWidth">06주차</th>
+            <th class="sameWidth">07주차</th>
+            <th class="sameWidth">08주차</th>
+            <th class="sameWidth">09주차</th>
+            <th class="sameWidth">10주차</th>
+            <th class="sameWidth">11주차</th>
+            <th class="sameWidth">12주차</th>
+            <th class="sameWidth">13주차</th>
+            <th class="sameWidth">14주차</th>
+            <th class="sameWidth">15주차</th>
+            <th class="sameWidth">16주차</th>
         </tr>
         </thead>
-        <tbody class="text-center">
-        <!--객체지향프로그래밍 출석 라인-->
-        <tr>
-            <td rowspan="2" class="study1" id="study1">객체지향프로그래밍</td>
-            <td>출석</td>
-            <!--1주차-->
-            <td class="text-center">
-                <div class="form-check">
-                    <input onchange="check('week1')" type="checkbox" class="form-check-input" id="present_week1">
-                    <label class="form-check-label"></label>
-                </div>
-            </td>
-            <!--2주차-->
-            <td>
-                <div class="form-check">
-                    <input onchange="check('present', 'week2')" value="" type="checkbox" class="form-check-input"
-                           id="present_week2">
-                    <label class="form-check-label"></label>
-                </div>
-            </td>
-            <!--3주차-->
-            <td>
-                <div class="form-check">
-                    <input onchange="check('week3')" type="checkbox" class="form-check-input" id="present_week3">
-                    <label class="form-check-label"></label>
-                </div>
-            </td>
-            <!--4주차-->
-            <td>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="present_week4">
-                    <label class="form-check-label"></label>
-                </div>
-            </td>
-            <!--5주차-->
-            <td>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="present_week5">
-                    <label class="form-check-label"></label>
-                </div>
-            </td>
-            <!--6주차-->
-            <td>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="present_week6">
-                    <label class="form-check-label"></label>
-                </div>
-            </td>
-            <!--7주차-->
-            <td>
-                <!-- Material unchecked -->
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="present_week7">
-                    <label class="form-check-label"></label>
-                </div>
-            </td>
-            <!--8주차-->
-            <td>
-                <!-- Material unchecked -->
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="present_week8">
-                    <label class="form-check-label"></label>
-                </div>
-            </td>
-            <!--9주차-->
-            <td>
-                <!-- Material unchecked -->
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="present_week9">
-                    <label class="form-check-label"></label>
-                </div>
-            </td>
-            <!--10주차-->
-            <td>
-                <!-- Material unchecked -->
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="present_week10">
-                    <label class="form-check-label"></label>
-                </div>
-            </td>
-            <!--11주차-->
-            <td>
-                <!-- Material unchecked -->
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="present_week11">
-                    <label class="form-check-label"></label>
-                </div>
-            </td>
-            <!--12주차-->
-            <td>
-                <!-- Material unchecked -->
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="present_week12">
-                    <label class="form-check-label"></label>
-                </div>
-            </td>
-            <!--13주차-->
-            <td>
-                <!-- Material unchecked -->
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="present_week13">
-                    <label class="form-check-label"></label>
-                </div>
-            </td>
-            <!--14주차-->
-            <td>
-                <!-- Material unchecked -->
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="present_week14">
-                    <label class="form-check-label"></label>
-                </div>
-            </td>
-            <!--15주차-->
-            <td>
-                <!-- Material unchecked -->
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="present_week15">
-                    <label class="form-check-label"></label>
-                </div>
-            </td>
-            <!--16주차-->
-            <td>
-                <!-- Material unchecked -->
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="present_week16">
-                    <label class="form-check-label"></label>
-                </div>
-            </td>
-        </tr>
-        <!--        객체지향프로그래밍 강의 수강 라인-->
-<!--        <tr>-->
-<!--            &lt;!&ndash;                    <td class="study1" id="study2">객체지향프로그래밍</td>&ndash;&gt;-->
-<!--            <td>강의수강</td>-->
-<!--            &lt;!&ndash;1주차&ndash;&gt;-->
-<!--            <td>-->
-<!--                &lt;!&ndash;             Material unchecked&ndash;&gt;-->
-<!--                <div class="form-check">-->
-<!--                    <input onClick="check(this)" type="checkbox" class="form-check-input" id="lesson_week1">-->
-<!--                    <label class="form-check-label"></label>-->
-<!--                </div>-->
-<!--            </td>-->
-<!--            &lt;!&ndash;2주차&ndash;&gt;-->
-<!--            <td>-->
-<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
-<!--                <div class="form-check">-->
-<!--                    <input type="checkbox" class="form-check-input" id="lesson_week2">-->
-<!--                    <label class="form-check-label"></label>-->
-<!--                </div>-->
-<!--            </td>-->
-<!--            &lt;!&ndash;3주차&ndash;&gt;-->
-<!--            <td>-->
-<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
-<!--                <div class="form-check">-->
-<!--                    <input type="checkbox" class="form-check-input" id="lesson_week3">-->
-<!--                    <label class="form-check-label"></label>-->
-<!--                </div>-->
-<!--            </td>-->
-<!--            &lt;!&ndash;4주차&ndash;&gt;-->
-<!--            <td>-->
-<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
-<!--                <div class="form-check">-->
-<!--                    <input type="checkbox" class="form-check-input" id="lesson_week4">-->
-<!--                    <label class="form-check-label"></label>-->
-<!--                </div>-->
-<!--            </td>-->
-<!--            &lt;!&ndash;5주차&ndash;&gt;-->
-<!--            <td>-->
-<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
-<!--                <div class="form-check">-->
-<!--                    <input type="checkbox" class="form-check-input" id="lesson_week5">-->
-<!--                    <label class="form-check-label"></label>-->
-<!--                </div>-->
-<!--            </td>-->
-<!--            &lt;!&ndash;6주차&ndash;&gt;-->
-<!--            <td>-->
-<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
-<!--                <div class="form-check">-->
-<!--                    <input type="checkbox" class="form-check-input" id="lesson_week6">-->
-<!--                    <label class="form-check-label"></label>-->
-<!--                </div>-->
-<!--            </td>-->
-<!--            &lt;!&ndash;7주차&ndash;&gt;-->
-<!--            <td>-->
-<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
-<!--                <div class="form-check">-->
-<!--                    <input type="checkbox" class="form-check-input" id="lesson_week7">-->
-<!--                    <label class="form-check-label"></label>-->
-<!--                </div>-->
-<!--            </td>-->
-<!--            &lt;!&ndash;8주차&ndash;&gt;-->
-<!--            <td>-->
-<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
-<!--                <div class="form-check">-->
-<!--                    <input type="checkbox" class="form-check-input" id="lesson_week8">-->
-<!--                    <label class="form-check-label"></label>-->
-<!--                </div>-->
-<!--            </td>-->
-<!--            &lt;!&ndash;9주차&ndash;&gt;-->
-<!--            <td>-->
-<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
-<!--                <div class="form-check">-->
-<!--                    <input type="checkbox" class="form-check-input" id="lesson_week9">-->
-<!--                    <label class="form-check-label"></label>-->
-<!--                </div>-->
-<!--            </td>-->
-<!--            &lt;!&ndash;10주차&ndash;&gt;-->
-<!--            <td>-->
-<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
-<!--                <div class="form-check">-->
-<!--                    <input type="checkbox" class="form-check-input" id="lesson_week10">-->
-<!--                    <label class="form-check-label"></label>-->
-<!--                </div>-->
-<!--            </td>-->
-<!--            &lt;!&ndash;11주차&ndash;&gt;-->
-<!--            <td>-->
-<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
-<!--                <div class="form-check">-->
-<!--                    <input type="checkbox" class="form-check-input" id="lesson_week11">-->
-<!--                    <label class="form-check-label"></label>-->
-<!--                </div>-->
-<!--            </td>-->
-<!--            &lt;!&ndash;12주차&ndash;&gt;-->
-<!--            <td>-->
-<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
-<!--                <div class="form-check">-->
-<!--                    <input type="checkbox" class="form-check-input" id="lesson_week12">-->
-<!--                    <label class="form-check-label"></label>-->
-<!--                </div>-->
-<!--            </td>-->
-<!--            &lt;!&ndash;13주차&ndash;&gt;-->
-<!--            <td>-->
-<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
-<!--                <div class="form-check">-->
-<!--                    <input type="checkbox" class="form-check-input" id="lesson_week13">-->
-<!--                    <label class="form-check-label"></label>-->
-<!--                </div>-->
-<!--            </td>-->
-<!--            &lt;!&ndash;14주차&ndash;&gt;-->
-<!--            <td>-->
-<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
-<!--                <div class="form-check">-->
-<!--                    <input type="checkbox" class="form-check-input" id="lesson_week14">-->
-<!--                    <label class="form-check-label"></label>-->
-<!--                </div>-->
-<!--            </td>-->
-<!--            &lt;!&ndash;15주차&ndash;&gt;-->
-<!--            <td>-->
-<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
-<!--                <div class="form-check">-->
-<!--                    <input type="checkbox" class="form-check-input" id="lesson_week15">-->
-<!--                    <label class="form-check-label"></label>-->
-<!--                </div>-->
-<!--            </td>-->
-<!--            &lt;!&ndash;16주차&ndash;&gt;-->
-<!--            <td>-->
-<!--                &lt;!&ndash; Material unchecked &ndash;&gt;-->
-<!--                <div class="form-check">-->
-<!--                    <input type="checkbox" class="form-check-input" id="lesson_week16">-->
-<!--                    <label class="form-check-label"></label>-->
-<!--                </div>-->
-<!--            </td>-->
-<!--        </tr>-->
+        <tbody class="text-center" id="tablebody">
+
         </tbody>
     </table>
 </div>
+
+
+<!--<div class="tdl_all" id="todolist">-->
+<!--    <div class="header" id="todolistDiv">-->
+<!--        <h4>To Do List</h4>-->
+<!--        <input class="todolistInput" type="text" id="todolistInput" placeholder="">-->
+<!--        <span onclick="newToDoList()" class="addBtn">add</span>-->
+<!--    </div>-->
+<!--    <ul id="todolistUl">-->
+<!--        <li>자바 1주차 과제</li>-->
+<!--    </ul>-->
+<!--</div>-->
+
+
 </body>
 </html>
